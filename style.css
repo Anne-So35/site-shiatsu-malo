@@ -1,0 +1,1574 @@
+/* =========================================================
+SOMMAIRE
+01. Variables & reset
+02. Typographie globale
+03. Layout générique (sections, conteneurs, fond)
+04. Header (si besoin plus tard)
+05. Accueil / Hero (1/3 – 2/3)
+06. Section : Le Shiatsu
+07. Section : La Séance
+08. Section : Qui suis-je ?
+09. Section : Les cabinets
+10. Section : Tarifs & Contact
+11. Footer
+12. Media queries
+========================================================= */
+
+
+/* =========================================================
+01. VARIABLES & RESET
+========================================================= */
+
+/* Polices à importer dans le <head> :
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+*/
+
+:root{
+  /* Typo */
+  --font-title: 'Lora', serif;
+  --font-body: Arial, sans-serif;
+  
+  /* Couleurs globales */
+  --clr-text: #2e2e2e;
+  --clr-muted: #6b6b6b;
+  --clr-accent: #8b5e3c;    /* accent brun */
+  
+  /* Couleurs Hero / identité */
+  --hero-blue:  #1f3fbf;
+  --hero-red:   #d54b2a;
+  --hero-border:#e6e2dd;
+  
+  /* Rythme & conteneur */
+  --container: 1100px;
+  --space-1: .5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-6: 3rem;
+  
+  /* Header sticky height (si besoin pour scroll-margin) */
+  --header-h: 72px;
+}
+
+:root {
+  --space-section: clamp(3rem, 6vw, 5rem); /* padding vertical */
+  --space-section-tight: clamp(2rem, 4vw, 3.5rem); /* variante plus compacte */
+}
+
+@font-face {
+  font-family: 'Seawave';
+  src: url('/assets/fonts/nt_seawave_standart-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SeawaveAlt';
+  src: url('/assets/fonts/nt_seawave_alternative-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  margin: 0;
+  color: var(--clr-text);
+  background: var(--clr-bg);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* Liens & focus accessibles */
+a{
+  color: inherit;
+  text-decoration: none;
+}
+a:hover{
+  color: var(--clr-accent);
+}
+:focus-visible{
+  outline: 2px solid var(--clr-accent);
+  outline-offset: 2px;
+}
+
+
+/* =========================================================
+02. TYPOGRAPHIE GLOBALE
+========================================================= */
+
+h1, h2, h3{
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-title);
+  line-height: 1.2;
+  color: var(--clr-text);
+}
+
+/* Tailles adaptées à un site vitrine */
+h1{
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3rem);
+  
+}
+h2{
+  font-weight: 400;
+  font-size: clamp(1.5rem, 2.8vw, 2rem);
+  letter-spacing: .05em;
+}
+h3{
+  font-weight: 400;
+  font-size: clamp(1.125rem, 2.2vw, 1.375rem);
+  letter-spacing: .05em;
+}
+
+p, li{
+  font-size: 1rem;
+  color: var(--clr-muted);
+}
+
+.muted{
+  color: var(--clr-muted);
+}
+
+/* Italique Lora pour citations / accroches */
+.emphasis{
+  font-family: var(--font-title);
+  font-style: italic;
+  font-weight: 400; /* 700 si besoin gras italique */
+}
+
+/* Paragraphe d’intro (lead) */
+.lead{
+  font-size: 1.125rem;
+  color: var(--clr-muted);
+  text-align: center;
+  max-width: 60ch;
+  margin: 0 auto var(--space-4);
+}
+
+/* Petit texte */
+.small{
+  font-size: .95rem;
+}
+
+
+/* =========================================================
+03. LAYOUT GÉNÉRIQUE
+========================================================= */
+
+section {
+  padding-block: var(--space-section);
+}
+
+
+.container{
+  width: min(100%, var(--container));
+  margin-inline: auto;
+  padding-inline: var(--space-2);
+}
+
+/* Bloc de texte étroit centré */
+.content-narrow{
+  max-width: 70ch;
+  margin-inline: auto;
+}
+
+/* Bouton simple générique */
+.btn{
+  display: inline-block;
+  padding: .75rem 1.1rem;
+  border: 1px solid var(--clr-accent);
+  border-radius: 999px;
+  color: var(--clr-accent);
+  font-weight: 600;
+}
+.btn:hover{
+  background: var(--clr-accent);
+  color: #fff;
+}
+
+/* Fond texturé, appliqué sur body ou footer */
+/* .has-texture{
+background-image: url('/assets/FOND.png');
+background-size: 520px auto;
+background-repeat: repeat;
+} */
+.has-texture{
+  background-color: #edd9c0;
+}
+
+/* Section bleu foncé */
+.section--blue{
+  background: var(--hero-blue);
+  color: #fff;
+}
+.section--blue h2,
+.section--blue p,
+.section--blue li{
+  color: #fff;
+}
+
+/* =========================================================
+HERO — Section d'accueil responsive et élégante
+========================================================= */
+.hero {
+  position: relative;
+  padding-block: var(--space-section);
+  padding-inline: var(--space-2);
+  overflow: hidden;
+}
+
+/* ================================
+GRILLE PRINCIPALE
+Layout fluide qui s'adapte naturellement
+================================ */
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) 2fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: start;
+}
+
+/* ================================
+COLONNE GAUCHE
+Vague + Identité
+================================ */
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Conteneur de la vague */
+.vague {
+  margin: 0;
+  width: 100%;
+  max-width: 320px;
+}
+
+.vague img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Bloc texte identité */
+
+
+.hero-title h1 {
+  font-family: 'SeawaveAlt', serif;
+  font-weight: 700;
+  font-size: clamp(4.5rem, 5.5vw, 5rem);
+  color: var(--hero-blue);
+  letter-spacing: 0.06em;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.1;
+}
+
+.hero-name {
+  font-family: 'SeawaveAlt', serif;
+  font-size: clamp(2rem, 3.5vw, 2.3rem);
+  color: var(--hero-blue);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+}
+
+.hero-phone {
+  font-family: 'SeawaveAlt', serif;
+  margin: 0.5rem 0;
+}
+
+.hero-phone a {
+  font-weight: 600;
+  font-size: clamp(1.5rem, 2.3vw, 1.6rem);
+  color: var(--hero-blue);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.hero-phone a:hover {
+  color: var(--hero-red);
+  text-decoration: underline;
+}
+
+.hero-cities {
+  font-family: 'SeawaveAlt', serif;
+  color: var(--hero-blue);
+  font-size: clamp(1.4rem, 2vw, 1.5rem);
+  letter-spacing: 0.02em;
+  margin: 0.25rem 0 0 0;
+}
+
+/* ================================
+COLONNE DROITE
+Menu + Citation + Photo
+================================ */
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ================================
+MENU NAVIGATION
+================================ */
+.hero-menu {
+  position: relative;
+}
+
+/* Bouton hamburger (caché par défaut) */
+.hero-menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 1.3rem;
+  color: var(--hero-blue);
+  cursor: pointer;
+  padding: 0.5rem;
+  align-self: flex-start;
+  transition: all 0.2s ease;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hero-menu-toggle:hover {
+  color: var(--hero-red);
+}
+
+.hero-menu-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Liste du menu */
+.hero-menu ul {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  gap: clamp(0.5rem, 2vw, 2rem);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap; /* empêche le retour à la ligne */
+  overflow: hidden;    /* pas de scroll horizontal en desktop */
+}
+
+.hero-menu li {
+  margin: 0;
+}
+
+.hero-menu a {
+  color: var(--hero-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  display: block;
+  font-size: clamp(0.75rem, 1.4vw, 0.9rem);
+  text-align: end;
+  background: transparent;
+  transition: all 0.2s ease
+}
+
+.hero-menu a:hover {
+  color: var(--hero-red);
+}
+
+/* Ligne rouge sous le menu */
+.hero-menu-underline {
+  height: 2px;
+  background: var(--hero-red);
+  opacity: 0.9;
+  margin-top: 0.75rem;
+}
+
+/* ================================
+CITATION
+================================ */
+.hero-quote {
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: clamp(0.95rem, 1.8vw, 1.125rem);
+  line-height: 1.6;
+  color: var(--hero-blue);
+  text-align: center;
+  margin: 1rem auto;
+  max-width: 90%;
+}
+
+/* ================================
+PHOTO PRINCIPALE
+================================ */
+.hero-photo {
+  margin: 0;
+  width: 100%;
+}
+
+.hero-photo img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--hero-border);
+}
+
+/* =========================================================
+RESPONSIVE — TABLETTE (< 1024px)
+========================================================= */
+@media (max-width: 1024px) {
+  /* Passage en disposition verticale avec ordre contrôlé */
+  .hero-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .hero-menu-toggle {
+    display: block;
+  }
+  
+  
+  /* Menu + ligne en premier */
+  .hero-right {
+    order: 1;
+    gap: 0.5rem;
+  }
+  
+  .hero-menu ul {
+    display: none;
+    flex-direction: column;
+    gap: 3;
+    backdrop-filter: blur(10px);
+    /* border: 2px solid var(--hero-blue); */
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    margin-top: 1rem;
+    box-shadow: 0 8px 24px rgba(31, 63, 191, 0.15);
+    overflow: hidden;
+  }
+  
+  .hero-menu-toggle[aria-expanded="true"] + ul {
+    display: flex !important;
+    flex-direction: column;
+  }
+  
+  
+  .hero-menu-underline {
+    margin-top: 0.5rem;
+  }
+  
+  /* Vague + texte en LIGNE, juste après le menu */
+  .hero-left {
+    order: 2;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    text-align: center;
+    margin-inline: auto;   /* ⭐ CENTRE LE BLOC DANS LA PAGE */
+  }
+  
+  .vague {
+    max-width: 200px;
+    flex-shrink: 0;
+  }
+  
+  .hero-title {
+    padding-left: 0;
+    flex: 1;
+  }
+  
+  /* Citation déplacée DANS hero-right mais après la photo */
+  .hero-quote {
+    order: 4;
+    max-width: 100%;
+    padding: 0 1rem;
+    margin: 1.5rem auto;
+  }
+  
+  /* Photo juste après vague+texte */
+  .hero-photo {
+    order: 3;
+  }
+  
+  .hero-photo img {
+    max-width: 650px;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+/* =========================================================
+RESPONSIVE — MOBILE (< 768px)
+========================================================= */
+@media (max-width: 768px) {
+  .hero {
+    padding: 1.5rem 0;
+  }
+  
+  .hero-grid {
+    gap: 1.5rem;
+  }
+  
+  /* Disposition horizontale vague + texte */
+  .hero-left {
+    order: 2;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    text-align: center;
+    margin-inline: auto;   /* CENTRE LE BLOC DANS LA PAGE */
+  }
+  
+  .vague {
+    max-width: 140px;
+    flex-shrink: 0;
+  }
+  
+  .hero-title {
+    padding-left: 0;
+    flex: 1;
+  }
+  
+  .hero-title h1 {
+    font-size: 1.6rem;
+  }
+  
+  /* Menu hamburger */
+  .hero-menu-toggle {
+    display: block;
+  }
+  
+  .hero-menu ul li:last-child {
+    border-bottom: none;
+  }
+  
+  .hero-menu ul a:hover {
+    background: rgba(31, 63, 191, 0.05);
+    color: var(--hero-red);
+    padding-left: 2rem;
+  }
+  
+  .hero-menu-toggle[aria-expanded="true"] + ul {
+    display: flex !important;
+    flex-direction: column;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .hero-menu-underline {
+    display: none;
+  }
+  
+  .hero-quote {
+    font-size: 0.95rem;
+    padding: 0 0.5rem;
+  }
+}
+
+/* =========================================================
+RESPONSIVE — PETIT MOBILE (< 480px)
+========================================================= */
+@media (max-width: 480px) {
+  .hero-left {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .vague {
+    max-width: 180px;
+  }
+  
+  .hero-title {
+    width: 100%;
+  }
+  
+  .hero-title h1 {
+    font-size: 1.4rem;
+  }
+  
+  .hero-name,
+  .hero-phone,
+  .hero-cities {
+    text-align: center;
+  }
+  
+  .hero-quote {
+    font-size: 0.9rem;
+  }
+}
+
+/* =========================================================
+FIX SCROLL HORIZONTAL
+========================================================= */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.hero,
+.hero-grid,
+.hero-left,
+.hero-right,
+.vague img,
+.hero-photo img {
+  max-width: 100%;
+}
+
+
+
+
+
+/* =========================================================
+02. SECTION : LE SHIATSU
+========================================================= */
+
+.shiatsu{
+  position: relative;
+}
+
+/* pastille rouge en haut de section */
+.shiatsu-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;                  /* Espace entre le point et le titre */
+  margin-bottom: 1.5rem;
+}
+
+.shiatsu-dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--hero-red);
+  flex-shrink: 0;
+}
+
+
+/* Titre */
+.shiatsu-title {
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  margin: 0;
+}
+
+/* ================================
+GRILLE : image + texte
+================================ */
+.shiatsu-grid {
+  display: grid;
+  grid-template-columns: 480px 1fr;
+  gap: 3rem;
+  align-items: start;
+  margin-top: 1rem;
+}
+
+/* Colonne image */
+
+.shiatsu-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  box-shadow: 0 1px 0 rgba(0,0,0,.06);
+  border-radius: 2px;
+}
+
+/* Colonne texte */
+.shiatsu-content p {
+  margin-bottom: .9rem;
+}
+
+/* Citation */
+.shiatsu-quote {
+  text-align: left;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* Tagline */
+.shiatsu-tagline {
+  text-align: center;
+  letter-spacing: .12em;
+  margin-top: .75rem;
+  font-size: clamp(1rem, 2vw, 1.4rem);
+}
+
+/* ================================
+Liste des bienfaits
+================================ */
+.shiatsu-list {
+  margin-top: 2rem;
+}
+
+.shiatsu-list ul {
+  margin: .5rem 0 0 1.1rem;
+  padding: 0;
+}
+
+.shiatsu-list li {
+  list-style: disc;
+  margin-bottom: .4rem;
+}
+
+/* Mention */
+.shiatsu-note {
+  margin-top: 1.5rem;
+  opacity: .9;
+}
+
+/* =========================================================
+RESPONSIVE — TABLETTE < 1024px
+========================================================= */
+
+@media (max-width: 1024px) {
+  
+  .shiatsu-title-wrapper {
+    justify-content: center;
+  }
+  
+  .shiatsu-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2rem;
+  }
+  
+  .shiatsu-media {
+    margin-inline: auto;
+    max-width: 500px;
+  }
+  
+  .shiatsu-content {
+    margin-inline: auto;
+    max-width: 90%;
+  }
+  
+  .shiatsu-quote {
+    text-align: center;
+  }
+}
+
+/* =========================================================
+RESPONSIVE — TABLETTE < 980px
+========================================================= */
+
+@media (max-width: 980px){
+  
+  /* Shiatsu */
+  .shiatsu-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+RESPONSIVE — MOBILE < 768px
+========================================================= */
+
+@media (max-width: 768px) {
+  
+  .shiatsu-grid {
+    gap: 1.5rem;
+  }
+  
+  .shiatsu-media {
+    max-width: 100%;
+  }
+  
+  .shiatsu-quote {
+    font-size: .85rem;
+  }
+
+  .shiatsu h1 {
+  font-size: 1.5rem;
+  }
+
+  .shiatsu h2 {
+  font-size: 1.3rem;
+  }
+
+  .shiatsu h3 {
+  font-size: 1.1rem;
+  }
+
+  p, li{
+  font-size: 1rem;
+  color: var(--clr-text);
+}
+}
+
+/* =========================================================
+03. SECTION : LA SÉANCE
+========================================================= */
+
+.seance {
+  position: relative;
+}                       
+
+/* Wrapper du titre */
+.seance-title-wrapper {
+  display: flex;
+  align-items: start;
+  gap: 1.5rem;  /* même espace que Shiatsu */
+  margin-bottom: 1.5rem;
+  margin-top: 0; /* on force à coller en haut */
+}
+
+/* Pastille rouge — identique à Shiatsu */
+.seance-dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--hero-red);
+  flex-shrink: 0;
+}
+
+/* Titre */
+.seance-title {
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  margin: 0;
+  color: var(--hero-blue);
+}
+
+
+/* Sous-titre */
+.seance-subtitle {
+  font-size: clamp(1.25rem, 2.6vw, 1.5rem);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: var(--hero-blue);
+}
+
+/* Grille */
+.seance-grid {
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 2rem;
+  align-items: start;
+  
+}
+
+/* Texte */
+.seance-content p {
+  margin: .85rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Image */
+.seance-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--hero-border);
+  box-shadow: 0 1px 0 rgba(0,0,0,.05);
+}
+
+
+@media (max-width: 1024px) {
+  .seance-title-wrapper {
+    justify-content: center;
+  }
+  
+}
+
+/* =========================================================
+RESPONSIVE — TABLETTE < 980px
+========================================================= */
+
+@media (max-width: 980px){
+  
+  /* Séance */
+  .seance-grid{
+    grid-template-columns: 1fr;
+  }
+  .seance-media{
+    order: -1; /* image en haut sur mobile */
+  }
+}
+
+
+
+
+
+/* =========================================================
+05. SECTION : LES CABINETS
+========================================================= */
+
+.cabinets-title{
+  text-align: center;
+  color: var(--hero-blue);
+  font-size: clamp(1.4rem, 2.6vw, 1.8rem);
+  margin-bottom: 1.25rem;
+}
+
+.cabinets-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.cabinet-title{
+  text-align: center;
+  color: var(--hero-blue);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  margin: 0 0 1.5rem 0;
+  letter-spacing: .05em;
+}
+
+.cabinet img{
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--hero-border);
+  box-shadow: 0 1px 0 rgba(0,0,0,.05);
+  border-radius: 2px;
+}
+
+/* =========================================================
+RESPONSIVE — TABLETTE < 980px
+========================================================= */
+
+@media (max-width: 980px){
+  
+  /* Cabinets */
+  .cabinets-grid{
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+
+
+
+/* =========================================================
+04. SECTION : QUI SUIS-JE ?
+========================================================= */
+
+.about{
+  position: relative;
+}
+
+/* Wrapper du titre */
+.about-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;  /* même espace que Shiatsu */
+  margin-bottom: 1.5rem;
+  margin-top: 0; /* on force à coller en haut */
+}
+
+/* Pastille rouge — identique à Shiatsu */
+.about-dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--hero-red);
+  flex-shrink: 0;
+}
+
+/* Titre */
+.about-title {
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  margin: 0;
+  color: #fff;
+}
+
+
+/* grille */
+.about-grid{
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 2rem;
+  align-items: start;
+  margin-top: 1rem;
+}
+
+/* portrait */
+.about-media img{
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(255,255,255,.25);
+  box-shadow: 0 1px 0 rgba(0,0,0,.06);
+  border-radius: 2px;
+}
+
+
+/* texte */
+.about-content p{
+  margin-bottom: .9rem;
+  color: #fff;
+}
+
+/* citation */
+.about-quote{
+  text-align: center;
+  font-size: 1rem;
+  max-width: 700px;
+  margin: 2rem auto 0;
+  line-height: 1.5;
+  color: #fff;
+}
+.about-quote cite{
+  display: block;
+  margin-top: .5rem;
+  font-style: normal;
+  opacity: .8;
+}
+
+.about-subtitle {
+  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.about-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: #fff;
+  line-height: 1.6;
+}
+
+.about-list li {
+  margin-bottom: .5rem;
+}
+
+
+/* =========================================================
+RESPONSIVE — TABLETTE < 1024px
+========================================================= */
+@media (max-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 320px 1fr;
+    gap: 1.5rem;
+  }
+  
+  .about-media img {
+    max-width: 320px;
+    margin-inline: auto;
+  }
+  
+  .about-title-wrapper {
+    margin-bottom: 1rem;
+    justify-content: center;
+  }
+  
+  .about-content p {
+    font-size: 0.95rem;
+  }
+  
+  .about-quote {
+    max-width: 90%;
+    font-size: 0.95rem;
+  }
+}
+
+/* =========================================================
+RESPONSIVE — TABLETTE < 980px
+========================================================= */
+@media (max-width: 980px){
+
+  /* Qui suis-je */
+  .about-grid{
+    grid-template-columns: 1fr;
+  } 
+}
+
+/* =========================================================
+RESPONSIVE — TABLETTE < 768px
+========================================================= */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .about-media {
+    order: 1;
+  }
+  
+  .about-media img {
+    max-width: 260px;
+    margin: 0 auto 1.5rem;
+  }
+  
+  .about-content {
+    order: 2;
+  }
+  
+  /* Titre + pastille centrés */
+  .about-title-wrapper {
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    gap: 1rem;
+  }
+  
+  .about-title {
+    font-size: 1.6rem; /* tu peux ajuster */
+    text-align: center;
+  }
+
+  .about-content p {
+    font-size: 14px;
+    margin-bottom: 0.75rem;
+  }
+  
+  .about-quote {
+    font-size: 14px;
+    margin-top: 2rem;
+    padding-inline: 1rem;
+  }
+}
+
+/* =========================================================
+RESPONSIVE — PETIT MOBILE < 480px
+========================================================= */
+@media (max-width: 480px) {
+  .about-media img {
+    max-width: 220px;
+  }
+  
+  .about-title {
+    font-size: 1.5rem;
+  }
+  
+  .about-quote {
+    font-size: 14pxrem;
+  }
+}
+
+/* =========================================================
+6. SECTION : TARIFS & CONTACT
+========================================================= */
+
+.pricing-contact-grid{
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  align-items: flex-start;
+  flex-wrap: nowrap; /* Desktop = 2 colonnes fixes */
+}
+
+/* Colonne gauche = Tarifs + Contact */
+.pricing-contact-left{
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  flex: 1 1 420px;
+  max-width: 480px;
+}
+
+/* Colonne droite = vague + adresses */
+.contact-side{
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  flex: 1 1 420px;
+  max-width: 480px;
+}
+
+
+/* =========================================================
+BLOC : TARIFS
+========================================================= */
+
+.pricing-block{
+  position: relative;
+}
+
+/* Titre + pastille rouge */
+.pricing-title-wrapper{
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.pricing-dot{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--hero-red);
+  flex-shrink: 0;
+}
+
+.pricing-title{
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  margin: 0;
+  color: var(--hero-blue);
+}
+
+/* Liste des tarifs */
+.pricing-list{
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+.pricing-list li{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: .75rem;
+  padding: .4rem 0;
+  position: relative;
+}
+
+.pricing-list li span:first-child{
+  position: relative;
+  color: var(--clr-muted);
+}
+
+.pricing-list li span:first-child::after{
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  bottom: .35rem;
+  border-bottom: 1px dotted rgba(0,0,0,.25);
+  z-index: -1;
+}
+
+.price{
+  color: var(--hero-blue);
+  font-weight: 700;
+  padding-left: 12px;
+}
+
+/* Notes */
+.notes{
+  margin: .75rem 0 1.2rem;
+  color: var(--clr-muted);
+ 
+}
+.notes p{
+
+  font-size: .8rem;
+}
+
+
+/* =========================================================
+BLOC : CONTACT
+========================================================= */
+
+.contact-block{
+  position: relative;
+}
+
+.contact-title-wrapper{
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.contact-dot{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--hero-red);
+  flex-shrink: 0;
+}
+
+.contact-title{
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  margin: 0;
+  color: var(--hero-blue);
+}
+
+.contact-list{
+  font-family: 'SeawaveAlt', serif;
+  list-style: none;
+  padding: 0 0 0 5px;
+  margin: 0 0 1.25rem 0;
+}
+
+.contact-list li{
+  font-family: 'SeawaveAlt', serif;
+  margin-bottom: .35rem;
+  color: var(--hero-blue);
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+/* CTA */
+.cta-wrap{
+  margin: 1rem 0;
+}
+
+.cta-large{
+  display: inline-block;
+  font-family:var(--font-title);
+  letter-spacing: .05em;
+  background: var(--hero-red);
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  color: #edd8c0;
+  padding: 1rem 2.5rem; /* ← augmente l’intérieur */
+  border-radius: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  box-shadow: 0 2px 0 rgba(0,0,0,.06);
+  min-width: 220px;      /* ← largeur minimum */
+}
+
+
+.cta-large:hover{
+  filter: brightness(1.05);
+  color: #edcba2;
+}
+
+.cta-large small{
+  font-weight: 400;
+  opacity: .95;
+}
+
+
+/* =========================================================
+COLONNE DROITE — vague + adresses
+========================================================= */
+
+.contact-visual img{
+  width: 72%;
+  min-width: 150px;
+  height: auto;
+  box-shadow: 0 1px 0 rgba(0,0,0,.05);
+}
+
+.contact-addresses{
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.contact-address{
+  color: var(--hero-blue);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.contact-address a{
+  color: var(--hero-blue);
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+RESPONSIVE — TABLETTE < 1024px
+========================================================= */
+
+@media(max-width:1024px){
+}
+
+/* =========================================================
+RESPONSIVE — TABLETTE < 980px
+========================================================= */
+
+@media (max-width: 980px){
+  /* Tarifs & contact */
+  .pricing-contact-grid{
+    grid-template-columns: 1fr;
+  }
+  .contact-visual img{
+    width: 50%;
+  }
+  .pricing-dot{
+    left: .5rem;
+  }
+}
+
+/* =========================================================
+MOBILE < 768px
+========================================================= */
+@media (max-width: 768px) {
+  
+  /* Toute la section passe sur 1 colonne */
+  .pricing-contact-grid{
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center; /* centre tout proprement */
+    gap: 2.5rem;
+  }
+  
+  /* On centre chaque bloc pour une belle lecture */
+  .pricing-contact-left,
+  .contact-side{
+    max-width: 100%;
+    width: 100%;
+    align-items: center; 
+    /* text-align: center;  */
+  }
+  
+  /* Vague centrée */
+  .contact-visual img{
+    width: 65%;
+    margin-inline: auto;
+  }
+  
+  /* Adresses centrées */
+  .contact-addresses{
+    text-align: center;
+    align-items: center;
+  }
+  
+  /* Titres centrés */
+  .pricing-title-wrapper,
+  .contact-title-wrapper{
+    justify-content: center;
+  }
+  
+  /* Colonne droite = vague + adresses */
+  .contact-side{
+    flex:0px;
+  }
+  
+  .contact-list li{
+    text-align: center;
+  }
+}
+
+/* =========================================================
+07. FOOTER
+========================================================= */
+.site-footer{
+  padding-block: var(--space-3);
+  background-color: var(--hero-blue);
+  font-size: 0.85rem; /* taille uniforme */
+}
+
+.footer-grid{
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.footer-logo img{
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: saturate(.95);
+}
+
+.footer-logo{
+  background: #e6e2dd; /* beige */
+  padding: 1rem;
+  border-radius: 6px; /* optionnel : joli */
+}
+
+.footer-text p{
+  margin: .6rem 0;
+  color: var(--hero-border);
+  font-size: 0.85rem; /* cohérent avec la section */
+}
+
+.footer-text .small{
+  font-size: 0.7rem;  /* plus petit mais lisible */
+  color: #cfcfcf;
+}
+
+.footer-meta{
+  color: var(--clr-muted);
+}
+
+/* =========================================================
+08. MEDIA QUERIES
+========================================================= */
+@media (max-width: 1024px) {
+  .seance-media img,
+  .shiatsu-photo img,
+  .hero-photo img,
+  .cabinet img,
+  .about-media img {
+    max-width: 400px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 900px){
+  .footer-grid{
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+  .footer-logo{
+    max-width: 160px;
+  }
+}
+
+
+/* =========================================================
+RESPONSIVE — TABLETTE < 768px
+========================================================= */
+
+@media (max-width: 768px) {
+  
+  .shiatsu-grid {
+    gap: 1.5rem;
+  }
+  
+  .shiatsu-media {
+    max-width: 100%;
+  }
+  
+  .shiatsu-note {
+    font-size: .85rem;
+  }
+
+  h1 {
+  font-size: 1.5rem;
+  }
+
+  h2 {
+  font-size: 1.3rem;
+  }
+
+  h3 {
+  font-size: 1.1rem;
+  }
+
+  p {
+  font-size: 14px;
+  }
+
+  li {
+  font-size: 14px;
+}
+
+span {
+  font-size: 14px;
+}
+  .shiatsu-quote {
+  font-size: 14px;
+  }
+
+  .shiatsu li {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px){
+  section{
+    padding-block: var(--space-4);
+  }
+}

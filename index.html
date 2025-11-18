@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- SEO de base -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index, follow">
+  <title>Shiatsu à Saint-Malo & Plerguer – Anne-Sophie | Praticienne certifiée</title>
+  <meta name="description" content="Anne-Sophie, praticienne certifiée en Shiatsu à Saint-Malo et Plerguer. Séances sur futon, approche bienveillante, tarifs clairs et prise de rendez-vous simple." />
+  <link rel="canonical" href="https://www.annesophieshiatsu.fr/" />
+  
+  <!-- Polices -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+  
+  <!-- Favicon (à ajouter dans /assets) -->
+  <link rel="icon" href="/assets/favicon.png" />
+  
+  <!-- Données structurées : deux cabinets (LocalBusiness) -->
+  <!-- si tu obtiens les adresses exactes, ajoute "streetAddress": "…". -->
+  <!-- si tu as les liens Google Business par ville, on peut ajouter "sameAs": ["URL"] sur chaque entrée. -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://www.annesophieshiatsu.fr/#saintmalo",
+        "name": "Anne-Sophie Joly-Pottuz — Shiatsu",
+        "image": "https://www.annesophieshiatsu.fr/assets/PORTRAIT_ANNE-SOPHIE_JOLY_POTTUZ.jpg",
+        "url": "https://www.annesophieshiatsu.fr/",
+        "telephone": "+33 6 65 74 47 79",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Saint-Malo",
+          "postalCode": "35400",
+          "addressCountry": "FR"
+        },
+        "areaServed": "Saint-Malo",
+        "priceRange": "€€"
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://www.annesophieshiatsu.fr/#plerguer",
+        "name": "Anne-Sophie Joly-Pottuz — Shiatsu",
+        "image": "https://www.annesophieshiatsu.fr/assets/PORTRAIT_ANNE-SOPHIE_JOLY_POTTUZ.jpg",
+        "url": "https://www.annesophieshiatsu.fr/",
+        "telephone": "+33 6 65 74 47 79",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Plerguer",
+          "postalCode": "35540",
+          "addressCountry": "FR"
+        },
+        "areaServed": "Plerguer",
+        "priceRange": "€€"
+      }
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://www.annesophieshiatsu.fr/#anne-sophie",
+      "name": "Anne-Sophie Joly-Pottuz",
+      "jobTitle": "Praticienne en Shiatsu",
+      "image": "https://www.annesophieshiatsu.fr/assets/PORTRAIT_ANNE-SOPHIE_JOLY_POTTUZ.jpg",
+      "url": "https://www.annesophieshiatsu.fr/",
+      "telephone": "+33 6 65 74 47 79",
+      "worksFor": [
+      { "@id": "https://www.annesophieshiatsu.fr/#saintmalo" },
+      { "@id": "https://www.annesophieshiatsu.fr/#plerguer" }
+      ],
+      "areaServed": ["Saint-Malo", "Plerguer"],
+      "knowsAbout": ["Shiatsu", "Bien-être", "Gestion du stress", "Douleurs musculaires", "Accompagnement périnatal"],
+      "sameAs": [
+      "https://maps.google.com/?q=Anne-Sophie+Shiatsu+Saint-Malo"
+      ]
+    }
+  </script>
+  
+  
+</head>
+
+<body class="has-texture"><!-- fond texturé activé par CSS via FOND.png -->
+  
+  <!-- HERO / ACCUEIL -->
+  <section id="accueil" class="section hero container">
+    <div class="hero-grid">
+      
+      <!-- Colonne gauche : vague + texte -->
+      <aside class="hero-left">
+        
+        <figure class="vague">
+          <img src="/assets/VAGUE.png" alt="Motif vague" loading="lazy">
+        </figure>
+        
+        <div class="hero-title">
+          <h1>SHIATSU</h1>
+          <p class="hero-name">Anne-Sophie<br>Joly-Pottuz</p>
+          <p class="hero-phone">
+            <a href="tel:+33665744779">06&nbsp;65&nbsp;74&nbsp;47&nbsp;79</a>
+          </p>
+          <p class="hero-cities">à Saint-Malo et Plerguer</p>
+        </div>
+        
+      </aside>
+      
+      
+      <!-- Colonne droite : menu + ligne + citation + photo -->
+      <div class="hero-right">
+        
+        <!-- Menu -->
+        <nav class="hero-menu nav" aria-label="Navigation principale">
+          <button class="hero-menu-toggle" aria-expanded="false" aria-controls="hero-menu-list">
+            ☰ Menu
+          </button>
+          <ul id="hero-menu-list">
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#leshiatsu">Le Shiatsu</a></li>
+            <li><a href="#laseance">La séance</a></li>
+            <li><a href="#quisuisje">Qui suis-je&nbsp;?</a></li>
+            <li><a href="#contact">Tarif et contact</a></li>
+          </ul>
+        </nav>
+        
+        <div class="hero-menu-underline"></div>
+        
+        <!-- Citation -->
+        <p class="hero-quote emphasis">
+          « L’âme du shiatsu est semblable à l’affection maternelle ;
+          la pression des mains fait jaillir la vie. » — Tokujirō Namikoshi
+        </p>
+        
+        <!-- Photo -->
+        <figure class="hero-photo">
+          <img src="/assets/PHOTO_AS_SHIATSU_1.jpg"
+          alt="Anne-Sophie pratique le shiatsu"
+          loading="lazy">
+        </figure>
+      </div>
+    </div>
+  </section>
+  
+  <!-- LE SHIATSU -->
+  <section id="leshiatsu" class="section section--blue">
+    <div class="container shiatsu">
+      
+      <div class="shiatsu-grid">
+        <!-- Colonne gauche : image -->
+        <div class="shiatsu-media">
+          <div class="shiatsu-photo">
+            <img src="/assets/PHOTO_AS_SHIATSU_2.jpg"
+            alt="Anne-Sophie pratique une pression de shiatsu sur le dos d’une cliente"
+            width="1060" height="768" loading="lazy">
+            
+          </div>
+        </div>
+        <!-- Colonne droite : contenu -->
+        <div class="shiatsu-content">
+          <!-- pastille rouge décorative -->
+          <div class="shiatsu-title-wrapper">
+            <span class="shiatsu-dot" aria-hidden="true"></span>
+            <h2 class="shiatsu-title emphasis">Qu’est-ce que le Shiatsu&nbsp;?</h2>
+          </div>
+          <p class="shiatsu-quote emphasis">
+            «&nbsp;Le Shiatsu (littéralement : pressions des doigts) consiste en l’application
+            de pressions rythmées sur tout le corps, dans un but de rééquilibrage corporel et d’amélioration
+            du bien-être.&nbsp;»
+          </p>
+          
+          <p>
+            C’est une technique manuelle de soin d’origine japonaise, de prévention et d’accompagnement
+            pour de nombreuses problématiques énergétiques d’ordre physique et émotionnel.
+          </p>
+          
+          <p>
+            Le Shiatsu vise à rétablir une circulation harmonieuse de l’énergie dans le corps en
+            effectuant des pressions, des mobilisations et des étirements sur les méridiens et points d’acupuncture.
+          </p>
+          
+          <p class="shiatsu-tagline emphasis">Détendre le corps · Apaiser l’esprit</p>
+        </div>
+      </div>
+      
+      <!-- Bénéfices / indications (liste) -->
+      <div class="shiatsu-list">
+        <p>
+          Le shiatsu est une approche à la fois préventive, qui s’intéresse aux causes des troubles
+          plutôt qu’à leurs symptômes. Une pratique régulière ou ponctuelle peut aider à soulager :
+        </p>
+        <ul>
+          <li>douleurs musculaires, articulaires, dorsales, maux de tête ;</li>
+          <li>troubles du sommeil, digestion ;</li>
+          <li>gestion des émotions (stress, anxiété…) et des périodes difficiles (deuil, séparation, maladie, examens…) ;</li>
+          <li>troubles du cycle (SOPK, endométriose, règles douloureuses/abondantes, SPM) et ménopause ;</li>
+          <li>fertilité, accompagnement grossesse, naissance, post-partum et deuil périnatal.</li>
+        </ul>
+      </div>
+      
+      <!-- Mentions -->
+      <p class="shiatsu-note emphasis small">
+        Le Shiatsu est reconnu au titre des pratiques complémentaires non médicamenteuses dans plusieurs pays.
+        Il ne se substitue pas à la médecine conventionnelle et ne dispense pas d’un avis médical.
+      </p>
+    </div>
+  </section>
+  
+  <!-- LA SÉANCE -->
+  <section id="laseance" class="section section--paper">
+    <div class="container seance">
+      
+      
+      <div class="seance-grid">
+        <!-- Colonne texte -->
+        <div class="seance-content">
+          
+          <!-- pastille rouge -->
+          <div class="seance-title-wrapper">
+            <span class="seance-dot" aria-hidden="true"></span>
+            <h2 class="seance-title emphasis">Comment se passe une séance&nbsp;?</h2>
+          </div>
+          
+          <p>Une séance dure environ une heure. Elle se pratique habillé, en tenue souple, allongé sur un futon ou une table, selon votre souhait et vos possibilités. Je prends d’abord le temps de vous écouter et de recueillir votre besoin pour la séance.</p>
+          
+          <p>Dans une ambiance calme et respectueuse, j’adapte les pressions et mobilisations à votre état et à vos besoins. Chaque séance est unique et personnalisée.</p>
+          
+          <p>Je propose aussi des séances adaptées à la grossesse et au post-partum, tout en douceur. Un suivi Shiatsu permet de vivre une grossesse harmonieuse et développe la confiance en soi pour l’accouchement. Pour le post-partum, je peux inclure votre bébé si vous le souhaitez.</p>
+          
+          <h3 class="seance-subtitle emphasis">À qui s’adresse le Shiatsu&nbsp;?</h3>
+          
+          <p>À toutes les personnes désireuses de prendre soin d’elles, quel que soit leur âge. Que vous traversiez une période de fatigue, de douleurs ou de stress, ou que vous souhaitiez simplement entretenir votre équilibre, le Shiatsu offre un soutien concret et durable.</p>
+          
+          <p>J’accompagne également les enfants (séances plus courtes, adaptées à leur capacité à rester allongés sur le futon).</p>
+        </div>
+        
+        <!-- Colonne image -->
+        <figure class="seance-media">
+          <img
+          src="/assets/PHOTO_AS_SHIATSU_3.jpg"
+          alt="Déroulé d’une séance de Shiatsu : mobilisation douce des hanches"
+          width="887" height="768" loading="lazy">
+        </figure>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CABINETS -->
+  <section id="cabinets" class="section section--paper">
+    <div class="container cabinets">
+      <div class="cabinets-grid">
+        <!-- Saint-Malo -->
+        <div class="cabinet">
+          <div class="cabinet-title emphasis">Le cabinet de Saint-Malo</div>
+          <a href="[URL Google Maps Saint-Malo]" target="_blank" rel="noopener">
+            <img
+            src="/assets/CABINET_SAINTMALO.webp" 
+            alt="Cabinet de Shiatsu à Saint-Malo : futon au sol, bureau, lumière douce"
+            width="720" height="900" loading="lazy">
+          </a>
+        </div>
+        
+        <!-- Plerguer -->
+        <div class="cabinet">
+          <div class="cabinet-title emphasis">Le cabinet de Plerguer</div>
+          <a href="[URL Google Maps Plerguer]" target="_blank" rel="noopener">
+            <img
+            src="/assets/CABINET_PLERGUER.webp" 
+            alt="Cabinet de Shiatsu à Plerguer : futon, plante verte, ensoleillement naturel"
+            width="720" height="900" loading="lazy">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- QUI SUIS-JE ? -->
+  <section id="quisuisje" class="section section--blue">
+    <div class="container about">
+      
+      <div class="about-grid">
+        <!-- Photo -->
+        <div class="about-media">
+          <img
+          src="/assets/PORTRAIT_ANNE-SOPHIE_JOLY_POTTUZ.jpg"
+          alt="Portrait d’Anne-Sophie Joly-Pottuz"
+          width="720" height="900" loading="lazy">
+        </div>
+        
+        <!-- Texte -->
+        <div class="about-content">
+          
+          <!-- pastille rouge -->
+          <div class="seance-title-wrapper">
+            <span class="seance-dot" aria-hidden="true"></span>
+            <h2 class="about-title emphasis">Qui suis-je&nbsp;?</h2>
+          </div>
+          
+          <p>Après avoir longtemps exprimé ma sensibilité et mon regard sur le monde en tant que Graphiste-Illustratrice, j’ai découvert le Shiatsu alors que je souffrais d’une pathologie du cycle menstruel, sans parvenir à trouver un réel soulagement.</p>
+          
+          <p>La séance a été une véritable révélation ; je me suis sentie soutenue, enveloppée et des améliorations se sont vite fait sentir. Peu de temps après, je m’inscrivais dans une école de Shiatsu pour comprendre cette approche qui m’avait touchée si profondément.</p>
+          
+          <p>Ces quatre années de formation ont éveillé quelque chose d’essentiel en moi : la Médecine Chinoise venait confirmer ma vision intuitive du vivant, celle d’un être humain relié aux éléments, aux saisons et à ses émotions. Moi qui avais beaucoup pratiqué la danse, j’ai retrouvé grâce au Shiatsu ce lien intime avec le corps, cette écoute subtile qui passe par les mains. Je me suis ensuite spécialisée dans l’accompagnement des femmes, à chaque étape de leur vie.</p>
+          
+          <p>Aujourd’hui, je vous accueille dans mes cabinets de Saint-Malo et Plerguer, où je travaille aux côtés de professionnels de la périnatalité pour offrir un soutien complet.</p>
+          
+          <!-- TITRE FORMATIONS -->
+          <h3 class="about-subtitle">Formations</h3>
+          
+          <!-- LISTE FORMATIONS -->
+          <ul class="about-list">
+            <li>École Shiatsu Atlantique — Diplôme de Praticien Shiatsu</li>
+            <li>2021 — Shiatsu et chakras — Carola Beresford Cooke</li>
+            <li>2022 — Merveilleux Vaisseaux — Marie Brunelière</li>
+            <li>2024 — Shiatsu et grossesse : postnatal, maman et bébé — Suzanne Yates (Wellmother ©)</li>
+            <li>2024 — Troubles du bassin, lombalgies et gynécologie — École Shiatsu Atlantique</li>
+            <li>2025 — Shiatsu et Fascias — Gabriella Poli</li>
+          </ul>
+          
+        </div>
+        
+      </div>
+      
+      <!-- Citation -->
+      <blockquote class="about-quote emphasis">
+        « Celui qui travaille avec ses mains est un ouvrier.<br>
+        Celui qui travaille avec ses mains et sa tête est un artisan.<br>
+        Celui qui travaille avec ses mains, sa tête et son cœur est un artiste. »<br>
+        <cite>— Saint François d’Assise</cite>
+      </blockquote>
+    </div>
+  </section>
+  
+  <!-- TARIFS & CONTACT -->
+  <section id="contact" class="section section--paper">
+    <div class="container pricing-contact">
+      
+      <div class="pricing-contact-grid">
+        
+        <!-- ==========================
+        COLONNE GAUCHE
+        ========================== -->
+        <div class="pricing-contact-left">
+          
+          <!-- ===== TARIFS ===== -->
+          <div class="pricing-block">
+            
+            <div class="pricing-title-wrapper">
+              <span class="pricing-dot" aria-hidden="true"></span>
+              <h2 class="pricing-title emphasis">Tarifs</h2>
+            </div>
+            
+            <ul class="pricing-list">
+              <li>
+                <span>Séance Shiatsu (env. 1h30)</span>
+                <span class="price">65€</span>
+              </li>
+              <li>
+                <span>Séance Shiatsu de suivi*</span>
+                <span class="price">60€</span>
+              </li>
+              <li>
+                <span>Séance Shiatsu enfant**</span>
+                <span class="price">50€</span>
+              </li>
+              <li>
+                <span>Suivi ventouses (30 min)</span>
+                <span class="price">30€</span>
+              </li>
+            </ul>
+            
+            <p class="emphasis muted small">Bons cadeaux disponibles sur demande</p>
+            
+            <div class="notes">
+              <p>* Les séances de suivi doivent être espacées de moins d’un mois.</p>
+              <p>** Pour les personnes à faible revenu/ étudiants, tarif solidaire sur demande</p>
+            </div>
+            
+          </div>
+          
+          <!-- ===== CONTACT ===== -->
+          <div class="contact-block">
+            
+            <div class="contact-title-wrapper">
+              <span class="contact-dot" aria-hidden="true"></span>
+              <h2 class="contact-title emphasis">Contact</h2>
+            </div>
+            
+            <ul class="contact-list">
+              <li>Anne-Sophie Joly-Pottuz</li>
+              <li>06&nbsp;65&nbsp;74&nbsp;47&nbsp;79</li>
+            </ul>
+            
+            <p class="cta-wrap">
+              <a class="cta-large"
+              href="https://calendly.com/anne-sophie-shiatsu"
+              target="_blank"
+              rel="noopener"
+              aria-label="Prendre rendez-vous – ouvrir l’agenda">
+              prendre RDV<br><small>voir le planning</small>
+            </a>
+          </p>
+          
+        </div>
+        
+      </div>
+      
+      <!-- ==========================
+      COLONNE DROITE (inchangée)
+      ========================== -->
+      <div class="contact-side">
+        
+        <div class="vague contact-visual">
+          <img src="/assets/VAGUE.png"
+          alt="Motif graphique, vague stylisée"
+          loading="lazy">
+        </div>
+        <div class="contact-addresses">
+          
+          <address class="contact-address emphasis">
+            <strong>Saint-Malo</strong><br>
+            2 Rue du Bois Herveau<br>
+            35400 Saint-Malo<br>
+            <a href="[URL_MAPS_SAINTMALO]" target="_blank" rel="noopener">
+              Voir sur Google Maps
+            </a>
+          </address>
+          
+          <address class="contact-address emphasis">
+            <strong>Plerguer</strong><br>
+            Maison de la périnatalité — Centre Pachamama<br>
+            6 Allée du Champ Lison<br>
+            35540 Plerguer<br>
+            <a href="[URL_MAPS_PLERGUER]" target="_blank" rel="noopener">
+              Voir sur Google Maps
+            </a>
+          </address>
+          
+        </div>
+      </div>
+      
+    </div>
+    
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer section section--paper">
+  <div class="container footer-grid">
+    
+    <!-- Logo syndicat -->
+    <figure class="footer-logo">
+      <img src="/assets/SPS_LOGO.png"
+      alt="Syndicat des Professionnels de Shiatsu"
+      width="180" height="180" loading="lazy">
+    </figure>
+    
+    <!-- Textes -->
+    <div class="footer-text">
+      <p>
+        Le Shiatsu est reconnu officiellement par l’État français et le Ministère du Travail
+        (J.O. du 25/07/2015) comme profession, et seul le SPS (Syndicat Professionnel de Shiatsu)
+        a été habilité à délivrer un titre professionnel de « Spécialiste en Shiatsu »
+        reconnu par l’État jusqu’au 26 juillet 2020. Les Spécialistes en Shiatsu — RNCP
+        bénéficient d’une reconnaissance à vie de leur profession.
+      </p>
+      
+      <p class="footer-text">
+        « Le Shiatsu est l’une des huit approches complémentaires citées dans la résolution
+        A4-0075/97 du Parlement européen, votée le 29 mai 1997, en tant que “médecine non conventionnelle digne d’intérêt”. »
+      </p>
+      
+      <p class="footer-meta small">
+        Anne-Sophie Joly-Pottuz — Entreprise Individuelle ·
+        SIRET 75142687500017
+      </p>
+      <p class="footer-meta small">
+        Crédit photo : Jean-Matthieu Gautier
+      </p>
+    </div>
+    
+  </div>
+</footer>
+
+<!-- Script minimal si besoin -->
+<script src="script.js" defer></script>
+</body>
+</html>
