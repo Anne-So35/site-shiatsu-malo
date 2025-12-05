@@ -116,8 +116,12 @@ h1, h2, h3{
 /* Tailles adaptées à un site vitrine */
 h1{
   font-weight: 700;
-  font-size: clamp(2rem, 4vw, 3rem);
-  
+  font-size: clamp(2rem, 4vw, 3rem);  
+}
+h1 .small {
+  font-size: 0.4em;
+  letter-spacing: normal;
+  line-height: 1; /* réduit l’espace vertical autour du texte */
 }
 h2{
   font-weight: 400;
